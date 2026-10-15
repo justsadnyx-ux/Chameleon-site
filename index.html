@@ -1,73 +1,117 @@
 <!DOCTYPE html><html><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Chameleon - Android Customization Tool</title>
+<title>Chameleon — Android Customization Tool</title>
 <style>
-*{box-sizing:border-box}
-body{font-family:-apple-system,Segoe UI,sans-serif;background:radial-gradient(1000px 600px at 60% -100px,#1e1b4b 0,#0a0a12 60%);color:#fff;margin:0;padding:24px;min-height:100vh}
-.wrap{max-width:960px;margin:0 auto}
-.hero{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
-h1{color:#4F46E5;font-size:44px;margin:0}
-.tag{color:#9aa0aa;margin:6px 0 20px;font-size:16px;max-width:640px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.box{background:#151520;padding:14px;border-radius:10px;border:1px solid #2a2a34}
-.stat{font-size:26px;font-weight:700;color:#4F46E5}
-.label{color:#9aa0aa;font-size:13px}
-.card{background:#151520;padding:20px;border-radius:16px;margin:16px 0;border:1px solid #2a2a34}
-.btn{background:#4F46E5;color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;display:inline-block;margin:8px 0 8px 0;border:none}
-.btn.outline{background:transparent;border:1px solid #4F46E5;color:#a5b4fc}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:12px}
-.feature{background:#151520;padding:14px;border-radius:10px;border:1px solid #2a2a34}
-code{font-family:Consolas,monospace;font-size:.9em;color:#7dd3fc}
-small{color:#9aa0aa}
-</style></head><body><div class="wrap">
-<div class="hero">
-<h1>Chameleon</h1>
-<div class="tag">Android customization tool. Change app names, icons, system settings and more from one place.</div>
-<div class="grid">
-<div class="box"><div class="stat" id="v">v1.0.0</div><div class="label">Latest release</div></div>
-<div class="box"><div class="stat" id="sz">-</div><div class="label">APK size</div></div>
-<div class="box"><div class="stat">API 24+</div><div class="label">Android</div></div>
-<div class="box"><div class="stat" id="dt">-</div><div class="label">Published</div></div>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a12;color:#fff;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(800px 500px at 70% -10%,rgba(79,70,229,.25) 0%,transparent 60%),radial-gradient(600px 400px at 10% 110%,rgba(139,92,246,.15) 0%,transparent 60%)}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:60px}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.logo span{color:#4F46E5}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.3);color:#a5b4fc;padding:6px 14px;border-radius:99px;font-size:13px;font-weight:600}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:#22C55E;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero{text-align:center;margin-bottom:64px}
+.hero h1{font-size:clamp(36px,6vw,56px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px}
+.hero h1 span{color:#4F46E5}
+.hero p{font-size:17px;color:#9aa0aa;max-width:560px;margin:0 auto 32px;line-height:1.6}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn-primary{background:#4F46E5;color:#fff}
+.btn-primary:hover{background:#4338ca;transform:translateY(-2px);box-shadow:0 8px 30px rgba(79,70,229,.35)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:64px}
+.stat{background:rgba(21,21,32,.8);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px;text-align:center}
+.stat .val{font-size:28px;font-weight:800;color:#4F46E5}
+.stat .lbl{font-size:12px;color:#9aa0aa;margin-top:4px}
+.section-title{font-size:28px;font-weight:800;letter-spacing:-.5px;margin-bottom:24px;text-align:center}
+.section-title span{color:#4F46E5}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:64px}
+.card{background:rgba(21,21,32,.8);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px;transition:all .2s}
+.card:hover{border-color:rgba(79,70,229,.3);transform:translateY(-4px)}
+.card .icon{width:44px;height:44px;border-radius:12px;background:rgba(79,70,229,.15);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
+.card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.card p{font-size:14px;color:#9aa0aa;line-height:1.6}
+.howto{background:rgba(21,21,32,.8);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:32px;margin-bottom:64px}
+.howto h2{font-size:20px;font-weight:700;margin-bottom:20px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .num{width:28px;height:28px;border-radius:50%;background:#4F46E5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.step p{font-size:14px;color:#9aa0aa;line-height:1.5}
+.step p b{color:#fff}
+.update-bar{background:rgba(21,21,32,.8);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px;text-align:center;margin-bottom:64px}
+.update-bar p{color:#9aa0aa;font-size:14px;margin-top:8px}
+footer{text-align:center;color:#555;font-size:13px}
+@media(max-width:600px){.hero h1{font-size:32px}.stats{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<div class="bg"></div>
+<div class="wrap">
+<header>
+<div class="logo">Chame<span>leon</span></div>
+<div class="badge"><span class="dot"></span><span id="ver">v1.1.0</span>&nbsp;Latest</div>
+</header>
+
+<section class="hero">
+<h1>Customize your <span>Android</span><br>like never before</h1>
+<p>Rename apps, change icons, tweak system settings — all from one beautiful dark charcoal app with automatic updates.</p>
+<div class="cta-row">
+<a class="btn btn-primary" id="dl" href="https://github.com/justsadnyx-ux/Chameleon/releases/latest/download/app-debug.apk">⬇ Download APK</a>
+<a class="btn btn-ghost" href="https://github.com/justsadnyx-ux/Chameleon">View on GitHub</a>
 </div>
-<div class="card">
-<a class="btn" id="dl" href="https://github.com/justsadnyx-ux/Chameleon/releases/latest/download/app-debug.apk">Download latest APK</a>
-<a class="btn outline" href="https://github.com/justsadnyx-ux/Chameleon/releases">All releases</a>
+</section>
+
+<div class="stats">
+<div class="stat"><div class="val" id="sz">5.6</div><div class="lbl">MB APK size</div></div>
+<div class="stat"><div class="val">API 24+</div><div class="lbl">Android version</div></div>
+<div class="stat"><div class="val" id="dt">—</div><div class="lbl">Published</div></div>
+<div class="stat"><div class="val">100%</div><div class="lbl">Open source</div></div>
+</div>
+
+<h2 class="section-title">Everything you need to <span>customize</span></h2>
+<div class="features">
+<div class="card"><div class="icon">✏️</div><h3>Rename apps</h3><p>Change any app's display name with a custom label applied via pinned launcher shortcut.</p></div>
+<div class="card"><div class="icon">🎨</div><h3>Change icons</h3><p>Pick from 8 built-in vector icons and apply them instantly to any app.</p></div>
+<div class="card"><div class="icon">🔤</div><h3>Font scale</h3><p>Adjust system font size from 0.5x to 1.5x with a smooth slider control.</p></div>
+<div class="card"><div class="icon">📐</div><h3>Display size</h3><p>Fine-tune display density for a more comfortable viewing experience.</p></div>
+<div class="card"><div class="icon">⚡</div><h3>Animation scale</h3><p>Speed up or slow down system animations to your preference.</p></div>
+<div class="card"><div class="icon">🖼️</div><h3>Wallpaper</h3><p>Quick-access wallpaper picker to change your home screen background.</p></div>
+<div class="card"><div class="icon">🌙</div><h3>Dark mode</h3><p>Charcoal dark UI by default with one-tap toggle support.</p></div>
+<div class="card"><div class="icon">🔄</div><h3>Update checker</h3><p>Automatically checks GitHub releases and downloads the latest APK.</p></div>
+</div>
+
+<div class="howto">
+<h2>How to install</h2>
+<div class="steps">
+<div class="step"><div class="num">1</div><p><b>Download</b> the APK from the button above or GitHub releases.</p></div>
+<div class="step"><div class="num">2</div><p><b>Enable</b> "Install from unknown sources" in Android settings.</p></div>
+<div class="step"><div class="num">3</div><p><b>Open</b> Chameleon and start customizing your apps.</p></div>
+</div>
+</div>
+
+<div class="update-bar">
+<a class="btn btn-primary" href="https://github.com/justsadnyx-ux/Chameleon/releases">🔔 View all releases</a>
 <p id="msg">Checking for updates…</p>
 </div>
-<div class="features">
-<div class="feature"><b>Rename apps</b><br>Change app labels with a custom name via pinned shortcut.</div>
-<div class="feature"><b>Change icons</b><br>Pick from 8 built-in icons and apply instantly.</div>
-<div class="feature"><b>System tweaks</b><br>Font scale, display size, animation scale, wallpaper, dark mode.</div>
-<div class="feature"><b>Per-app control</b><br>Pick exactly which apps to customize with search and list view.</div>
-<div class="feature"><b>Update system</b><br>Checks GitHub releases and downloads the latest APK automatically.</div>
-<div class="feature"><b>Dark UI</b><br>Modern charcoal Material 3 UI by default.</div>
-</div>
-<div class="card">
-<h2>Install</h2>
-<ol>
-<li>Download APK above or from GitHub releases.</li>
-<li>Allow “Install from unknown sources”.</li>
-<li>Open Chameleon, customize, apply.</li>
-</ol>
-<h3>Update system</h3>
-<p>App automatically pulls the latest GitHub release and can prompt for download. No Play Store needed.</p>
-</div>
+
+<footer>Chameleon v1.1.0 — Built with ❤️ for Android customization</footer>
 </div>
 <script>
-const repo = 'justsadnyx-ux/Chameleon';
+const repo='justsadnyx-ux/Chameleon';
 fetch('https://api.github.com/repos/'+repo+'/releases/latest')
  .then(r=>r.json())
  .then(d=>{
-   const assets = d.assets||[];
-   const apk = assets.find(a=>a.name==='app-debug.apk');
-   if (apk){
+   const assets=d.assets||[];
+   const apk=assets.find(a=>a.name==='app-debug.apk');
+   if(apk){
      document.getElementById('dl').href=apk.browser_download_url;
-     document.getElementById('sz').textContent=(apk.size/1024/1024).toFixed(2)+'MB';
+     document.getElementById('sz').textContent=(apk.size/1024/1024).toFixed(1);
    }
-   document.getElementById('v').textContent='v'+(d.tag_name||'1.0.0');
+   document.getElementById('ver').textContent='v'+(d.tag_name||'1.1.0');
    document.getElementById('dt').textContent=(d.published_at||'').slice(0,10);
-   document.getElementById('msg').textContent=(d.name||d.tag_name||'release')+' • '+assets.length+' asset(s)';
+   document.getElementById('msg').textContent=(d.name||d.tag_name||'Latest release')+' • '+assets.length+' asset(s) available';
  })
- .catch(e=>{ console.warn(e); document.getElementById('msg').textContent='Offline. Check GitHub release page manually.'; });
+ .catch(e=>{console.warn(e);document.getElementById('msg').textContent='Offline — check GitHub releases manually.';});
 </script>
 </body></html>
