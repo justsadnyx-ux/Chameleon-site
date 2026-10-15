@@ -1,78 +1,69 @@
 <!DOCTYPE html><html><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Chameleon — Get Your Key</title>
+<title>Chameleon — Get Key</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F5F5F7;color:#1A1A1A;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-.card{background:#fff;border-radius:20px;padding:40px;max-width:440px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center}
-h1{font-size:22px;font-weight:700;margin-bottom:8px}
-.sub{color:#6B7280;font-size:14px;margin-bottom:24px;line-height:1.5}
-.step{display:flex;align-items:center;gap:12px;text-align:left;margin-bottom:16px}
-.step .num{width:28px;height:28px;border-radius:50%;background:#4F46E5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-.step p{font-size:14px;color:#374151;line-height:1.4}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer;width:100%;margin-bottom:12px}
-.btn-primary{background:#FF0000;color:#fff}
-.btn-primary:hover{background:#CC0000;transform:translateY(-2px)}
-.btn-dark{background:#1A1A1A;color:#fff}
-.btn-dark:hover{background:#333;transform:translateY(-2px)}
-.key-display{background:#F3F4F6;border:2px dashed #D1D5DB;border-radius:12px;padding:20px;margin:20px 0}
-.key-display .label{font-size:12px;color:#6B7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
-.key-display .value{font-size:32px;font-weight:800;letter-spacing:4px;color:#4F46E5;font-family:monospace}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#1a1a2e;color:#e0e0e0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:#252540;border:1px solid #3a3a5c;border-radius:16px;padding:36px;max-width:420px;width:100%;text-align:center}
+h1{font-size:20px;font-weight:700;margin-bottom:6px;color:#fff}
+.sub{color:#8888a8;font-size:13px;margin-bottom:24px;line-height:1.5}
+.step{display:flex;align-items:center;gap:12px;text-align:left;margin-bottom:14px}
+.step .num{width:26px;height:26px;border-radius:50%;background:#4F46E5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.step p{font-size:13px;color:#b0b0c8;line-height:1.4}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer;width:100%;margin-bottom:10px}
+.btn-youtube{background:#FF0000;color:#fff}
+.btn-youtube:hover{background:#cc0000}
+.btn-dark{background:#1a1a2e;color:#fff;border:1px solid #3a3a5c}
+.btn-dark:hover{background:#252540}
+.key-display{background:#1a1a2e;border:2px dashed #4F46E5;border-radius:10px;padding:18px;margin:18px 0}
+.key-display .label{font-size:11px;color:#8888a8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.key-display .value{font-size:26px;font-weight:800;letter-spacing:2px;color:#4F46E5;font-family:monospace}
 .hidden{display:none}
-.note{font-size:12px;color:#9CA3AF;margin-top:12px;line-height:1.5}
+.note{font-size:11px;color:#666688;margin-top:10px;line-height:1.5}
 </style></head><body>
 <div class="card">
-<h1>Get your Chameleon key</h1>
-<p class="sub">Hey! To keep Chameleon free for everyone, we ask that you subscribe to our YouTube channel. It takes a few seconds and it means a lot to us.</p>
+<h1>yo, grab ur key</h1>
+<p class="sub">sub to the channel, get ur key. it's tied to ur device n expires in 3 days. ez.</p>
 
 <div id="step1">
-<div class="step"><div class="num">1</div><p>Click the button below — it will open our channel in a new tab.</p></div>
-<div class="step"><div class="num">2</div><p>Hit <b>Subscribe</b> on the YouTube channel.</p></div>
-<div class="step"><div class="num">3</div><p>Come back here and click "I've subscribed" to get your key.</p></div>
-<a class="btn btn-primary" href="https://youtube.com/@yozacc?sub_confirmation=1" target="_blank">Subscribe on YouTube</a>
-<button class="btn btn-dark" onclick="showKey()">I've subscribed — show my key</button>
+<div class="step"><div class="num">1</div><p>hit the button, opens the channel in a new tab</p></div>
+<div class="step"><div class="num">2</div><p>smash that <b>subscribe</b> button on youtube</p></div>
+<div class="step"><div class="num">3</div><p>come back n hit "i subbed" to get ur key</p></div>
+<a class="btn btn-youtube" href="https://youtube.com/@yozacc?sub_confirmation=1" target="_blank">sub on youtube</a>
+<button class="btn btn-dark" onclick="showKey()">i subbed — lemme get my key</button>
 </div>
 
 <div id="step2" class="hidden">
-<p class="sub">Here's your key. Copy it and paste it into the Chameleon app:</p>
-<div class="key-display"><div class="label">Your key</div><div class="value" id="keyValue">······</div></div>
-<p class="sub" style="font-size:12px">This key is tied to your device and expires in 3 days. You can renew it anytime.</p>
-<button class="btn btn-dark" onclick="copyKey()">Copy key</button>
-<p class="note">If your key doesn't work, make sure you're entering it on the same device you generated it on.</p>
+<p class="sub">here's ur key. copy it n paste it in the app:</p>
+<div class="key-display"><div class="label">ur key</div><div class="value" id="keyValue">····</div></div>
+<p class="sub" style="font-size:12px">tied to ur device. dies in 3 days. renew anytime.</p>
+<button class="btn btn-dark" onclick="copyKey()">copy key</button>
+<p class="note">if it don't work, make sure ur entering it on the same device u got it on</p>
 </div>
 </div>
 <script>
-function getDeviceId(){const p=new URLSearchParams(location.search);return p.get('d')||'unknown'}
-function generateKey(deviceId){
-  const secret='chameleon_yozacc_v2';
-  const input=deviceId+'::'+secret;
-  // Java String.hashCode(): s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+function getHwid(){const p=new URLSearchParams(location.search);return p.get('d')||'unknown'}
+function generateKey(hwid){
+  const secret='cham_v3_dark';
+  const input=hwid+'::'+secret;
   let hash=0;
-  for(let i=0;i<input.length;i++){
-    hash=(31*hash+input.charCodeAt(i))|0; // keep 32-bit like Java int
-  }
+  for(let i=0;i<input.length;i++) hash=(31*hash+input.charCodeAt(i))|0;
   const num=Math.abs(hash);
-  const base=String(num%1000000000).padStart(9,'0');
-  // Luhn checksum
+  const base=String(num%1000000000000).padStart(12,'0');
   let sum=0;
-  for(let i=0;i<base.length;i++){
-    let d=parseInt(base[i]);
-    if(i%2===0)d*=2;
-    if(d>9)d-=9;
-    sum+=d;
-  }
-  const check=(10-(sum%10))%10;
-  return base+check;
+  for(let i=0;i<base.length;i++) sum+=parseInt(base[i]);
+  const check=String.fromCharCode(65+(sum%26));
+  return base.slice(0,4)+'-'+base.slice(4,8)+'-'+base.slice(8,12)+check;
 }
 function showKey(){
-  const key=generateKey(getDeviceId());
+  const key=generateKey(getHwid());
   document.getElementById('keyValue').textContent=key;
   document.getElementById('step1').classList.add('hidden');
   document.getElementById('step2').classList.remove('hidden');
 }
 function copyKey(){
   const val=document.getElementById('keyValue').textContent;
-  navigator.clipboard.writeText(val).then(()=>alert('Key copied! Paste it in the Chameleon app.'));
+  navigator.clipboard.writeText(val).then(()=>alert('copied! paste it in chameleon'));
 }
 </script>
 </body></html>
