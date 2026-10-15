@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chameleon - Android Customization Tool</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,Segoe UI,sans-serif;background:radial-gradient(1000px 600px at 60% -100px,#1e1b4b 0,#0a0a12 60%);color:#fff;margin:0;padding:24px;min-height:100vh}
+.wrap{max-width:960px;margin:0 auto}
+.hero{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+h1{color:#4F46E5;font-size:44px;margin:0}
+.tag{color:#9aa0aa;margin:6px 0 20px;font-size:16px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.box{background:#151520;padding:14px;border-radius:10px;border:1px solid #2a2a34}
+.stat{font-size:26px;font-weight:700;color:#4F46E5}
+.label{color:#9aa0aa;font-size:13px}
+.card{background:#151520;padding:20px;border-radius:16px;margin:16px 0;border:1px solid #2a2a34}
+.btn{background:#4F46E5;color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;display:inline-block;margin:8px 0 8px 0;border:none}
+.btn.outline{background:transparent;border:1px solid #4F46E5;color:#a5b4fc}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:12px}
+.feature{background:#151520;padding:14px;border-radius:10px;border:1px solid #2a2a34}
+code{font-family:Consolas,monospace;font-size:.9em;color:#7dd3fc}
+small{color:#9aa0aa}
+</style></head><body><div class="wrap">
+<div class="hero">
+<h1>Chameleon</h1>
+<div class="tag">Android customization tool. Change app names, icons, system settings and more from one place.</div>
+<div class="grid">
+<div class="box"><div class="stat" id="v">v1.0.0</div><div class="label">Latest release</div></div>
+<div class="box"><div class="stat" id="sz">-</div><div class="label">APK size</div></div>
+<div class="box"><div class="stat">API 24+</div><div class="label">Android</div></div>
+<div class="box"><div class="stat" id="dt">-</div><div class="label">Published</div></div>
+</div>
+<div class="card">
+<a class="btn" id="dl" href="https://github.com/justsadnyx-ux/Chameleon/releases/latest/download/app-debug.apk">Download latest APK</a>
+<a class="btn outline" href="https://github.com/justsadnyx-ux/Chameleon/releases">All releases</a>
+<p id="msg">Checking for updates…</p>
+</div>
+<div class="features">
+<div class="feature"><b>Rename apps</b><br>Change app labels with a custom name via pinned shortcut.</div>
+<div class="feature"><b>Change icons</b><br>Pick from 8 built-in icons and apply instantly.</div>
+<div class="feature"><b>System tweaks</b><br>Font scale, display size, animation scale, wallpaper, dark mode.</div>
+<div class="feature"><b>Per-app control</b><br>Pick exactly which apps to customize with search and list view.</div>
+<div class="feature"><b>Update system</b><br>Checks GitHub releases and downloads the latest APK automatically.</div>
+<div class="feature"><b>Dark UI</b><br>Modern charcoal Material 3 UI by default.</div>
+</div>
+<div class="card">
+<h2>Install</h2>
+<ol>
+<li>Download APK above or from GitHub releases.</li>
+<li>Allow “Install from unknown sources”.</li>
+<li>Open Chameleon, customize, apply.</li>
+</ol>
+<h3>Update system</h3>
+<p>App automatically pulls the latest GitHub release and can prompt for download. No Play Store needed.</p>
+</div>
+</div>
+<script>
+const repo = 'justsadnyx-ux/Chameleon';
+fetch('https://api.github.com/repos/'+repo+'/releases/latest')
+ .then(r=>r.json())
+ .then(d=>{
+   const assets = d.assets||[];
+   const apk = assets.find(a=>a.name==='app-debug.apk');
+   if (apk){
+     document.getElementById('dl').href=apk.browser_download_url;
+     document.getElementById('sz').textContent=(apk.size/1024/1024).toFixed(2)+'MB';
+   }
+   document.getElementById('v').textContent='v'+(d.tag_name||'1.0.0');
+   document.getElementById('dt').textContent=(d.published_at||'').slice(0,10);
+   document.getElementById('msg').textContent=(d.name||d.tag_name||'release')+' • '+assets.length+' asset(s)';
+ })
+ .catch(e=>{ console.warn(e); document.getElementById('msg').textContent='Offline. Check GitHub release page manually.'; });
+</script>
+</body></html>
