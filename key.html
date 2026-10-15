@@ -19,13 +19,14 @@ h1{font-size:22px;font-weight:700;margin-bottom:8px}
 .key-display .label{font-size:12px;color:#6B7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .key-display .value{font-size:32px;font-weight:800;letter-spacing:4px;color:#4F46E5;font-family:monospace}
 .hidden{display:none}
+.note{font-size:12px;color:#9CA3AF;margin-top:12px;line-height:1.5}
 </style></head><body>
 <div class="card">
 <h1>Get your Chameleon key</h1>
-<p class="sub">Hey! To keep Chameleon free for everyone, we ask that you subscribe to our YouTube channel. It takes 10 seconds and it means a lot.</p>
+<p class="sub">Hey! To keep Chameleon free for everyone, we ask that you subscribe to our YouTube channel. It takes a few seconds and it means a lot to us.</p>
 
 <div id="step1">
-<div class="step"><div class="num">1</div><p>Click the button below — it'll open our channel in a new tab.</p></div>
+<div class="step"><div class="num">1</div><p>Click the button below — it will open our channel in a new tab.</p></div>
 <div class="step"><div class="num">2</div><p>Hit <b>Subscribe</b> on the YouTube channel.</p></div>
 <div class="step"><div class="num">3</div><p>Come back here and click "I've subscribed" to get your key.</p></div>
 <a class="btn btn-primary" href="https://youtube.com/@yozacc?sub_confirmation=1" target="_blank">Subscribe on YouTube</a>
@@ -35,23 +36,23 @@ h1{font-size:22px;font-weight:700;margin-bottom:8px}
 <div id="step2" class="hidden">
 <p class="sub">Here's your key. Copy it and paste it into the Chameleon app:</p>
 <div class="key-display"><div class="label">Your key</div><div class="value" id="keyValue">······</div></div>
-<p class="sub" style="font-size:12px">This key is bound to your device and expires in 3 days.</p>
+<p class="sub" style="font-size:12px">This key is tied to your device and expires in 3 days. You can renew it anytime.</p>
+<button class="btn btn-dark" onclick="copyKey()">Copy key</button>
+<p class="note">If your key doesn't work, make sure you're entering it on the same device you generated it on.</p>
 </div>
 </div>
 <script>
 function getDeviceId(){const p=new URLSearchParams(location.search);return p.get('d')||'unknown'}
 function generateKey(deviceId){
-  const secret='chameleon_yozacc_v2_2024';
+  const secret='chameleon_yozacc_v2';
   const input=deviceId+'::'+secret;
-  // Simple hash that matches the Java implementation
+  // Java String.hashCode(): s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
   let hash=0;
   for(let i=0;i<input.length;i++){
-    const chr=input.charCodeAt(i);
-    hash=((hash<<5)-hash)+chr;
-    hash|=0; // Convert to 32bit integer
+    hash=(31*hash+input.charCodeAt(i))|0; // keep 32-bit like Java int
   }
-  hash=Math.abs(hash);
-  let base=String(hash%1000000000).padStart(9,'0');
+  const num=Math.abs(hash);
+  const base=String(num%1000000000).padStart(9,'0');
   // Luhn checksum
   let sum=0;
   for(let i=0;i<base.length;i++){
@@ -68,6 +69,10 @@ function showKey(){
   document.getElementById('keyValue').textContent=key;
   document.getElementById('step1').classList.add('hidden');
   document.getElementById('step2').classList.remove('hidden');
+}
+function copyKey(){
+  const val=document.getElementById('keyValue').textContent;
+  navigator.clipboard.writeText(val).then(()=>alert('Key copied! Paste it in the Chameleon app.'));
 }
 </script>
 </body></html>

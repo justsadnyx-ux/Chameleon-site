@@ -34,28 +34,31 @@ header{display:flex;justify-content:space-between;align-items:center;margin-bott
 .card .icon{width:40px;height:40px;border-radius:10px;background:#EEF0FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px}
 .card h3{font-size:15px;font-weight:700;margin-bottom:6px}
 .card p{font-size:13px;color:#6B7280;line-height:1.55}
-.howto{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:28px;margin-bottom:56px}
+.howto{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:28px;margin-bottom:40px}
 .howto h2{font-size:18px;font-weight:700;margin-bottom:16px}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 .step{display:flex;gap:10px;align-items:flex-start}
 .step .num{width:24px;height:24px;border-radius:50%;background:#4F46E5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
 .step p{font-size:13px;color:#6B7280;line-height:1.5}
 .step p b{color:#1A1A1A}
+.legal{display:flex;gap:12px;justify-content:center;margin-bottom:56px;flex-wrap:wrap}
+.legal a{color:#4F46E5;text-decoration:none;font-size:14px;font-weight:600}
+.legal a:hover{text-decoration:underline}
 .key-box{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:28px;text-align:center;margin-bottom:56px}
 .key-box h2{font-size:18px;font-weight:700;margin-bottom:8px}
-.key-box p{font-size:14px;color:#6B7280;margin-bottom:16px}
+.key-box p{font-size:14px;color:#6B7280;margin-bottom:16px;line-height:1.5}
 footer{text-align:center;color:#9CA3AF;font-size:12px}
 @media(max-width:600px){.hero h1{font-size:28px}.stats{grid-template-columns:repeat(2,1fr)}}
 </style></head><body>
 <div class="wrap">
 <header>
 <div class="logo">Chame<span>leon</span></div>
-<div class="badge"><span class="dot"></span><span id="ver">v2.0.0</span></div>
+<div class="badge"><span class="dot"></span><span id="ver">v2.1.0</span></div>
 </header>
 
 <section class="hero">
 <h1>Your phone.<br><em>Your rules.</em></h1>
-<p>Chameleon lets you rename apps, swap icons, tweak system settings and make your Android feel truly personal — no root required.</p>
+<p>Chameleon helps you rename apps, swap icons, tweak system settings and make your Android feel truly personal — no root needed.</p>
 <div class="cta-row">
 <a class="btn btn-primary" id="dl" href="#">Download APK</a>
 <a class="btn btn-dark" href="#key">Get License Key</a>
@@ -64,7 +67,7 @@ footer{text-align:center;color:#9CA3AF;font-size:12px}
 </section>
 
 <div class="stats">
-<div class="stat"><div class="val" id="sz">—</div><div class="lbl">MB</div></div>
+<div class="stat"><div class="val" id="sz">—</div><div class="lbl">MB APK size</div></div>
 <div class="stat"><div class="val">API 24+</div><div class="lbl">Android</div></div>
 <div class="stat"><div class="val" id="dt">—</div><div class="lbl">Published</div></div>
 <div class="stat"><div class="val">Free</div><div class="lbl">3-day license</div></div>
@@ -72,14 +75,14 @@ footer{text-align:center;color:#9CA3AF;font-size:12px}
 
 <h2 class="section-title">What you can do</h2>
 <div class="features">
-<div class="card"><div class="icon">✏️</div><h3>Rename any app</h3><p>Give your apps custom names that show up on your home screen and app drawer.</p></div>
+<div class="card"><div class="icon">✏️</div><h3>Rename any app</h3><p>Give your apps custom names that show up on your home screen and in your app drawer.</p></div>
 <div class="card"><div class="icon">🎨</div><h3>Swap icons</h3><p>Pick from a curated set of beautiful vector icons and apply them instantly.</p></div>
 <div class="card"><div class="icon">🔤</div><h3>Font scaling</h3><p>Adjust system font size from tiny to huge — find what's comfortable for your eyes.</p></div>
 <div class="card"><div class="icon">📐</div><h3>Display density</h3><p>Make everything on screen bigger or smaller with display size controls.</p></div>
 <div class="card"><div class="icon">⚡</div><h3>Animation speed</h3><p>Speed up or slow down system animations to match your pace.</p></div>
 <div class="card"><div class="icon">🖼️</div><h3>Wallpaper</h3><p>Quick-access the wallpaper picker straight from the app.</p></div>
 <div class="card"><div class="icon">🌗</div><h3>Dark mode</h3><p>One-tap dark mode toggle with a gorgeous charcoal theme.</p></div>
-<div class="card"><div class="icon">💾</div><h3>Backup &amp; restore</h3><p>Export your customizations and import them on any device.</p></div>
+<div class="card"><div class="icon">💾</div><h3>Backup &amp; restore</h3><p>Export your customisations and import them on any device.</p></div>
 <div class="card"><div class="icon">🔄</div><h3>Auto-update</h3><p>Checks GitHub releases and downloads the newest version for you.</p></div>
 </div>
 
@@ -88,7 +91,7 @@ footer{text-align:center;color:#9CA3AF;font-size:12px}
 <div class="steps">
 <div class="step"><div class="num">1</div><p><b>Download &amp; install</b> the APK from above.</p></div>
 <div class="step"><div class="num">2</div><p><b>Get your key</b> — subscribe to our YouTube channel for a free 3-day license.</p></div>
-<div class="step"><div class="num">3</div><p><b>Customize</b> — rename apps, change icons, tweak settings to your heart's content.</p></div>
+<div class="step"><div class="num">3</div><p><b>Customise</b> — rename apps, change icons, tweak settings to your heart's content.</p></div>
 </div>
 </div>
 
@@ -96,6 +99,11 @@ footer{text-align:center;color:#9CA3AF;font-size:12px}
 <h2>Get your license key</h2>
 <p>Subscribe to our YouTube channel and get a free 3-day key. It's quick, free, and helps support the project.</p>
 <a class="btn btn-primary" href="https://youtube.com/@yozacc?sub_confirmation=1" target="_blank">Subscribe &amp; Get Key</a>
+</div>
+
+<div class="legal">
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
 </div>
 
 <footer>Chameleon — made with care for Android customisation fans.</footer>
@@ -111,7 +119,7 @@ fetch('https://api.github.com/repos/'+repo+'/releases/latest')
      document.getElementById('dl').href=apk.browser_download_url;
      document.getElementById('sz').textContent=(apk.size/1024/1024).toFixed(1);
    }
-   document.getElementById('ver').textContent='v'+(d.tag_name||'2.0.0');
+   document.getElementById('ver').textContent='v'+(d.tag_name||'2.1.0');
    document.getElementById('dt').textContent=(d.published_at||'').slice(0,10);
  })
  .catch(e=>{console.warn(e);});
