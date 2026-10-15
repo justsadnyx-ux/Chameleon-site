@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chameleon — Get Your Key</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F5F5F7;color:#1A1A1A;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:#fff;border-radius:20px;padding:40px;max-width:440px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center}
+h1{font-size:22px;font-weight:700;margin-bottom:8px}
+.sub{color:#6B7280;font-size:14px;margin-bottom:24px;line-height:1.5}
+.step{display:flex;align-items:center;gap:12px;text-align:left;margin-bottom:16px}
+.step .num{width:28px;height:28px;border-radius:50%;background:#4F46E5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.step p{font-size:14px;color:#374151;line-height:1.4}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer;width:100%;margin-bottom:12px}
+.btn-primary{background:#FF0000;color:#fff}
+.btn-primary:hover{background:#CC0000;transform:translateY(-2px)}
+.btn-dark{background:#1A1A1A;color:#fff}
+.btn-dark:hover{background:#333;transform:translateY(-2px)}
+.key-display{background:#F3F4F6;border:2px dashed #D1D5DB;border-radius:12px;padding:20px;margin:20px 0}
+.key-display .label{font-size:12px;color:#6B7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.key-display .value{font-size:32px;font-weight:800;letter-spacing:4px;color:#4F46E5;font-family:monospace}
+.hidden{display:none}
+</style></head><body>
+<div class="card">
+<h1>Get your Chameleon key</h1>
+<p class="sub">Hey! To keep Chameleon free for everyone, we ask that you subscribe to our YouTube channel. It takes 10 seconds and it means a lot.</p>
+
+<div id="step1">
+<div class="step"><div class="num">1</div><p>Click the button below — it'll open our channel in a new tab.</p></div>
+<div class="step"><div class="num">2</div><p>Hit <b>Subscribe</b> on the YouTube channel.</p></div>
+<div class="step"><div class="num">3</div><p>Come back here and click "I've subscribed" to get your key.</p></div>
+<a class="btn btn-primary" href="https://youtube.com/@yozacc?sub_confirmation=1" target="_blank">Subscribe on YouTube</a>
+<button class="btn btn-dark" onclick="showKey()">I've subscribed — show my key</button>
+</div>
+
+<div id="step2" class="hidden">
+<p class="sub">Here's your key. Copy it and paste it into the Chameleon app:</p>
+<div class="key-display"><div class="label">Your key</div><div class="value" id="keyValue">······</div></div>
+<p class="sub" style="font-size:12px">This key is bound to your device and expires in 3 days.</p>
+</div>
+</div>
+<script>
+function getDeviceId(){const p=new URLSearchParams(location.search);return p.get('d')||'unknown'}
+function generateKey(deviceId){
+  const secret='chameleon_yozacc_v2_2024';
+  const input=deviceId+'::'+secret;
+  // Simple hash that matches the Java implementation
+  let hash=0;
+  for(let i=0;i<input.length;i++){
+    const chr=input.charCodeAt(i);
+    hash=((hash<<5)-hash)+chr;
+    hash|=0; // Convert to 32bit integer
+  }
+  hash=Math.abs(hash);
+  let base=String(hash%1000000000).padStart(9,'0');
+  // Luhn checksum
+  let sum=0;
+  for(let i=0;i<base.length;i++){
+    let d=parseInt(base[i]);
+    if(i%2===0)d*=2;
+    if(d>9)d-=9;
+    sum+=d;
+  }
+  const check=(10-(sum%10))%10;
+  return base+check;
+}
+function showKey(){
+  const key=generateKey(getDeviceId());
+  document.getElementById('keyValue').textContent=key;
+  document.getElementById('step1').classList.add('hidden');
+  document.getElementById('step2').classList.remove('hidden');
+}
+</script>
+</body></html>
